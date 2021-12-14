@@ -56,7 +56,7 @@ const Map = () => {
 },[])*/
 
 
-// Constante d'afficheage d'un markeur unique
+// Affiche la liste des marker
 const renderMarker = () => {
   return INITIAL_MARKER.map(_marker => (
     <Marker
@@ -94,7 +94,7 @@ const renderDetailMarker = () => (                                    //Affiche 
       resizeMode="cover"
       style={{ width: 100, height: 90 }}
     />
-    <View                           //Vue texte
+    <View                                                                 //Vue du texte
       style={{ flex:1, paddingLeft: 5, flexDirection:'column'}}
     >
       <Text style={{ fontWeight: 'bold' }}>{ marker['title'] }</Text>
@@ -112,8 +112,8 @@ return curentPosition.latitude ? (
      loadingEnabled={true}
   //showsUserLocation
     initialRegion={curentPosition}
-    >
-      { renderMarker() }
+    > 
+      { renderMarker() }                        
     {/*<MapView.Marker
           coordinate={{
             latitude: 48.868574,
@@ -132,17 +132,18 @@ return curentPosition.latitude ? (
           }}
         />*/}
     </MapView>
-    {marker.hasOwnProperty('id') && renderDetailMarker()}
-  </View>
+    {marker.hasOwnProperty('id') && renderDetailMarker()}                      
+  </View>                                                   // selectionner le marqueur affiche les informations
 
 ):<ActivityIndicator style={{ flex: 1 }} animating size="large" />
 
 };
 
-const height = Dimensions.get('window').height
+//Dimension de l'écran
+const height = Dimensions.get('window').height 
 const width = Dimensions.get('window').width
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create({                         //Balise de style "styles" appellé plus haut
   map: {
     height
   },
